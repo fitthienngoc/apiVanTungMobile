@@ -101,6 +101,9 @@ if (isset($_GET['action'])) {
 		case 'Q_RepComment':
 			require 'Q_RepComment.php';
 			break;
+		case 'Q_getDashboard':
+			require 'Q_getDashboard.php';
+			break;
 	}
 } else {
 	$json = json_encode($result);
@@ -230,8 +233,6 @@ function uploadBase64($data = 'data:image/png;base64,AAAFBfj42Pj4')
 		return $url;
 	}
 	return $data;
-
-	
 }
 
 function uploadListPicture($pictures = [])

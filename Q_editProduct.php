@@ -76,7 +76,7 @@ if ($_GET['Id']) {
 
         // BƯỚC 3: TÌM LIMIT VÀ CURRENT_PAGE
         $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-        $limit = 10;
+        $limit = 1000;
         $total_page = ceil($total_records / $limit);
         if ($current_page > $total_page) {
             $current_page = $total_page;
