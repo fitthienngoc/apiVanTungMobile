@@ -31,6 +31,7 @@ if($_SERVER['PHP_AUTH_USER']){
 	$email = $_SERVER['PHP_AUTH_USER'];
 	$password = $_SERVER['PHP_AUTH_PW'];
 	$search = $_GET['search'];
+	$limit = $_GET['limit'];
 	$queryCheck = "SELECT * FROM `user` WHERE `email` = '$email' AND `password` = '$password'";
 	$in_check = $conn->query($queryCheck) or die($conn->error);
 	$data = $in_check->fetch_assoc();
@@ -46,7 +47,7 @@ if($_SERVER['PHP_AUTH_USER']){
 
 	    // BƯỚC 3: TÌM LIMIT VÀ CURRENT_PAGE
 		$current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-		$limit = 10;
+		$limit ? null :	$limit = 10;
 		$total_page = ceil($total_records / $limit);
 		if ($current_page > $total_page){
 		    $current_page = $total_page;
@@ -85,5 +86,3 @@ if($_SERVER['PHP_AUTH_USER']){
 }
 $json = json_encode($result);
 			print_r($json);
-
-?>
